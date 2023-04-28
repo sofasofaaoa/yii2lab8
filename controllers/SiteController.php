@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Comment;
 use app\models\Post;
 use Yii;
 use yii\filters\AccessControl;
@@ -25,6 +26,11 @@ class SiteController extends Controller
                 'class' => AccessControl::class,
                 'only' => ['logout'],
                 'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'register'],
+                        'roles' => ['?'],
+                    ],
                     [
                         'actions' => ['logout'],
                         'allow' => true,
@@ -65,7 +71,9 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $posts = Post::find()->orderBy('id desc')->limit(10)->all();
-        return $this->render('index', ['posts' => $posts]);
+        $comments = Comment::find()->orderBy('id desc')->all();
+        $model = new Comment();
+        return $this->render('index', ['posts' => $posts, 'model' => $model, 'comments' => $comments]);
     }
 
     /**

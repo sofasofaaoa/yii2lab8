@@ -15,7 +15,7 @@ $config = [
         'authManager' => ['class' => 'yii\rbac\PhpManager'], // или 'yii\rbac\PhpManager'.
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'qweasd123',
+            'cookieValidationKey' => 'fdghnfhmfhnf',
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
             ]
